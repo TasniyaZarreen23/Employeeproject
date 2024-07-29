@@ -1,0 +1,138 @@
+html {
+  background-color: #e4e9fd;
+  background-image: -webkit-linear-gradient(  #f9fafe 70%, #aca7b0 30%);
+  min-height: 100%;
+  font-family: "helvetica neue";
+}
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  min-height: 95vh;
+}
+main {
+  text-align: center;
+  flex: 1 0 auto;
+}
+h1 {
+  color:  #553d7f;
+  padding: 10px;
+}
+
+.box {
+  max-width: 800px;
+  margin: 50px auto;
+  border-radius: 10px;
+  border: 0.1px solid  #342e3e ;
+  box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
+}
+
+.box1 {
+  max-width: 500px;
+  margin: 50px auto;
+  background-image: -webkit-linear-gradient(65deg,#f9fafe 50%, #aca7b0 50% 60%);
+  border-radius: 10px;
+  border: 0.1px solid  #312c38 ;
+  box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
+}
+
+form.edit {
+  display: flex;
+}
+
+.item {
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.item:last-child {
+  border-bottom: 0;
+}
+
+form {
+  text-align: center;
+  margin-left: 20px;
+}
+
+button.add {
+  min-height: 40px;
+  width: 50px;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.691);
+  color: #fff;
+  font-size: 30px;
+  
+}
+ 
+button.edit {
+  margin-left: 5px;
+  margin-right: 20px;
+  border: none;
+  background: none;
+ 
+}
+button:hover {
+  background-color: #a9aea9;
+} 
+
+
+input[type="text"] {
+  text-align: left;
+  height: 60px;
+  top: 10px;
+  border: none;
+  background: transparent;
+  font-size: 18px;
+  font-weight: 200;
+  width: 150px;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  box-shadow: inset 0 -3px 0 0 #4f4f50;
+}
+
+::placeholder {
+  color: rgb(44, 43, 43);
+  opacity: 0.8;
+}
+
+footer {
+  flex: 0 0 auto;
+  color: white;
+  text-align: center;
+}
+
+-----------------------------
+table {
+  width: 100%;
+  border-collapse: collapse; 
+}
+
+th, td {
+  border: 1px solid #ddd; 
+  padding: 8px; 
+  width: 200px;
+  font-size: large;
+}
+
+th {
+  background-color:#3c3743; 
+  text-align: left; 
+  color: #fff;
+}
+
+td{
+  color: black;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9; 
+  
+}
+
+tr:hover {
+  background-color: #ddd; 
+}

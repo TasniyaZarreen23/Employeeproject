@@ -1,0 +1,80 @@
+<%- include('partials/header.ejs'); -%>
+
+<div class="box1" id="heading">
+  <h1>
+    <%= listTitle %>
+  </h1>
+</div>
+<div class="box">
+  <table>
+    <thead>
+      <tr>
+        <th>Employee ID</th>
+        <th>Employee Name</th>
+        <th>Designation</th>
+        <th>Gender</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% for(let item of listItems) { %>
+        <tr>
+          <td><%= item.employeeid %></td>
+          <td><%= item.employeename %></td>
+          <td><%= item.designation %></td>
+          <td><%= item.gender %></td>
+          <td>
+            <button onclick="toggleEditForm(this)" style="border-radius: 5px; border: 0px solid black;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="gray" class="bi bi-pencil" viewBox="0 0 16 16">
+                <path d="M12.146.146a.5.5 0 0 1 .708 0l2.646 2.646a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zm-.707.707L10.5 1.793l3 3 1.646-1.646-3-3zm-2.5 3L9.5 2.793l-7 7V11h1.207l7-7z"/>
+              </svg>    
+            </button>  
+
+            <form action="/delete" method="post" style="display:inline;" >
+              <input type="hidden" name="employeeID" value="<%= item.employeeid %>">
+              <button type="submit" style="cursor:pointer; border-radius:5px; border: 0px solid black;">
+                <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#5f6368"><path d="M312-144q-29.7 0-50.85-21.15Q240-186.3 240-216v-480h-48v-72h192v-48h192v48h192v72h-48v479.57Q720-186 698.85-165T648-144H312Zm336-552H312v480h336v-480ZM384-288h72v-336h-72v336Zm120 0h72v-336h-72v336ZM312-696v480-480Z"/></svg>
+              </button>
+            </form>
+            
+            <form class="edit" action="/edit" method="post" style="display:inline;">
+              <input type="hidden" name="employeeID" value="<%= item.employeeid %>">
+              <input type="text" name="employeeName" value="<%= item.employeename %>" placeholder="Employee Name" required hidden>
+              <input type="text" name="designation" value="<%= item.designation %>" placeholder="Designation" required hidden>
+              <input type="text" name="gender" value="<%= item.gender %>" placeholder="Gender" required hidden>
+              <button type="submit" hidden>
+                <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#5f6368">
+                  <path d="M816-672v456q0 29.7-21.15 50.85Q773.7-144 744-144H216q-29.7 0-50.85-21.15Q144-186.3 144-216v-528q0-29.7 21.15-50.85Q186.3-816 216-816h456l144 144Zm-72 30L642-744H216v528h528v-426ZM480-252q45 0 76.5-31.5T588-360q0-45-31.5-76.5T480-468q-45 0-76.5 31.5T372-360q0 45 31.5 76.5T480-252ZM264-552h336v-144H264v144Zm-48-77v413-528 115Z"/>
+                </svg>
+              </button>
+            </form>
+          </td>
+        </tr>
+      <% } %>
+    </tbody>
+  </table>
+
+  <form class="item" action="/add" method="post">
+    <input type="text" name="employeeID" placeholder="Employee ID" required>
+    <input type="text" name="employeeName" placeholder="Employee Name" required>
+    <input type="text" name="designation" placeholder="Designation" required>
+    <input type="text" name="gender" placeholder="Gender" required>
+    <button class="add" type="submit">
+      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368">
+        <path d="M440-280h80v-160h160v-80H520v-160h-80v160H280v80h160v160ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm0-560v560-560Z"/>
+      </svg>
+    </button>
+  </form>
+</div>
+
+<script>
+  function toggleEditForm(button) {
+    const form = button.parentElement.querySelector('.edit');
+    const inputs = form.querySelectorAll('input');
+    const submitButton = form.querySelector('button[type="submit"]');
+    inputs.forEach(input => input.hidden = !input.hidden);
+    submitButton.hidden = !submitButton.hidden;
+  }
+</script>
+
+<%- include('partials/footer.ejs'); -%>
